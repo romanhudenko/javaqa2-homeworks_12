@@ -40,7 +40,8 @@ public class ShopTest {
         Assertions.assertTrue(repository.isHasProduct(1));
     }
 
-    @Test void managerSearch() {
+    @Test
+    void managerSearch() {
         Repository repository = new Repository();
         ProductManager manager = new ProductManager(repository);
         Book test1 = new Book(1, "Test book", 10.0, "Someone");

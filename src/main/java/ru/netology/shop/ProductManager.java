@@ -28,7 +28,7 @@ public class ProductManager {
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0]; // тут будем хранить подошедшие запросу продукты
-        for (Product product: repository.findAll()) {
+        for (Product product : repository.findAll()) {
             if (matches(product, text)) {
                 result = addToArray(result, product);
             }
