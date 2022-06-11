@@ -41,9 +41,12 @@ public class ShopTest {
         repository.save(test3);
         Assertions.assertThrows(
                 NotFoundException.class,
-                () -> {repository.removeById(3);}
+                () -> {
+                    repository.removeById(3);
+                }
         );
     }
+
     @Test
     public void managerAdd() {
         Repository repository = new Repository();
