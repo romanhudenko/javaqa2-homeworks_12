@@ -1,5 +1,7 @@
 package ru.netology.shop;
 
+import ru.netology.shop.exceptions.NotFoundException;
+
 public class Repository {
     private Product[] goods = new Product[0];
 
@@ -16,17 +18,17 @@ public class Repository {
         return goods;
     }
 
-    public boolean isHasProduct(int productId) {
+    public Product findById(int productId) {
         for (Product good : goods) {
             if (good.getId() == productId) {
-                return true;
+                return good;
             }
         }
-        return false;
+        return null;
     }
 
-    public void delete(int productId) {
-        if (isHasProduct(productId)) {
+    public void removeById(int productId) {
+        if (findById(productId) != null) {
             Product[] tmp = new Product[goods.length - 1];
             int counter = 0;
             for (Product good : goods) {
@@ -36,6 +38,8 @@ public class Repository {
                 }
             }
             goods = tmp;
+        } else {
+            throw new NotFoundException("Element with id: " + productId + " not found");
         }
     }
 }
